@@ -13,21 +13,52 @@ npm install --save react-hook-post-robot
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
+import { usePostRobotOn, usePostRobotSend, PostRobotContext } from 'react-hook-post-robot'
 
-import { useMyHook } from 'react-hook-post-robot'
+const SampleComponentParent = (props) => {
+  // In fact, you can specify an contentWindow of iframe.
+  // You can fix the window under the Context.
+  return <PostRobotContext.Provider value={{ window }} {...props} />
+}
 
-const Example = () => {
-  const example = useMyHook()
+const SampleComponentChild = () => {
+  const [state, setState] = useState(null)
+
+  // Instead of postRobot.on('test', () => message)
+  usePostRobotOn('test', () => {
+    return 'Hello, react-hook-post-robot!'
+  }, [])
+
+  // Instead of postRobot.send('test', ({ data }) => setState(data))
+  const sender = usePostRobotSend('test')
+  useEffect(() => {
+    sender().then(({ data }) => setState(data))
+  }, [])
+
   return (
-    <div>{example}</div>
+    <>{state}</>
   )
 }
+
+const App = () => {
+  return (
+    <SampleComponentParent>
+      <SampleComponentChild />
+    </SampleComponentParent>
+  )
+}
+
+export default App
 ```
 
 ## License
 
 MIT © [aiji42](https://github.com/aiji42)
+
+## Inspiration
+This library is inspired by:
+- [post-robot](https://github.com/krakenjs/post-robot)
 
 ---
 

@@ -1,21 +1,20 @@
-import * as React from 'react'
+import { createContext, useContext, useEffect, useRef } from 'react'
+import postRobot from 'post-robot'
 
-export const useMyHook = () => {
-  let [{
-    counter
-  }, setState] = React.useState({
-    counter: 0
-  })
+const defaultTargetWindow = { window }
+export const PostRobotContext = createContext(defaultTargetWindow)
 
-  React.useEffect(() => {
-    let interval = window.setInterval(() => {
-      counter++
-      setState({counter})
-    }, 1000)
-    return () => {
-      window.clearInterval(interval)
-    }
-  }, [])
+export const usePostRobotOn = (key, callback, deps) => {
+  const { window: contextWindow } = useContext(PostRobotContext)
+  const listener = useRef(null)
 
-  return counter
+  useEffect(() => {
+    listener.current = postRobot.on(key, { window: contextWindow }, callback)
+    return () => listener.current.cancel()
+  }, [...deps, contextWindow])
+}
+
+export const usePostRobotSend = (key) => {
+  const { window: contextWindow } = useContext(PostRobotContext)
+  return (data) => postRobot.send(contextWindow, key, data)
 }
