@@ -1,6 +1,6 @@
 {
   "name": "react-hook-post-robot",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "It&#x27;s easy to use &quot;robot-post&quot; on React&#x27;s components.",
   "author": "aiji42",
   "license": "MIT",
@@ -22,7 +22,6 @@
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
-    "post-robot": "^10.0.37",
     "react": "^16.9.0"
   },
   "devDependencies": {
@@ -58,7 +57,6 @@
     "eslint-plugin-react": "^7.10.0",
     "eslint-plugin-standard": "^3.1.0",
     "gh-pages": "^2.0.1",
-    "post-robot": "^10.0.37",
     "react": "^16.9.0",
     "react-scripts": "^3.4.0",
     "react-test-renderer": "^16.9.0",
@@ -68,5 +66,8 @@
     "rollup-plugin-node-resolve": "^4.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.0",
     "rollup-plugin-url": "^2.1.0"
+  },
+  "dependencies": {
+    "post-robot": "^10.0.37"
   }
 }
