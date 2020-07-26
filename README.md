@@ -2,7 +2,7 @@
 
 > It&#x27;s easy to use &quot;robot-post&quot; on React&#x27;s components.
 
-[![NPM](https://img.shields.io/npm/v/react-hook-post-robot.svg)](https://www.npmjs.com/package/react-hook-post-robot) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/react-hook-post-robot.svg)](https://www.npmjs.com/package/react-hook-post-robot) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![Build Status](https://travis-ci.org/aiji42/react-hook-post-robot.svg?branch=master)](https://travis-ci.org/aiji42/react-hook-post-robot)
 
 ## Install
 
